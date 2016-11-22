@@ -1,4 +1,4 @@
-function [insolationTotal] = getInsolation(solarAltitudeAngle,solarAzimuthAngle, panelTiltAngle, panelAzimuthAngle, groundReflectance, month, daysPassed)
+function [insolationTotal, beamRadiation] = calcInsolation(solarAltitudeAngle,solarAzimuthAngle, panelTiltAngle, panelAzimuthAngle, groundReflectance, month, daysPassed)
     
     exec('getDepthDiffuse.sce');
     i = acosd(cosd(solarAltitudeAngle)*cosd(solarAzimuthAngle-panelAzimuthAngle)*sind(panelTiltAngle)+sind(solarAltitudeAngle)*cosd(panelTiltAngle))

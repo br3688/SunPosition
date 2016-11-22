@@ -20,16 +20,16 @@ groundReflectance = 0.2;
 
 exec('convertGlobal.sce');
 exec('convertLst.sce');
-exec('getSunCoordinates.sce');
+exec('calcSunCoordinates.sce');
 exec('NumberDays.sce');
-exec('getInsolation.sce');
+exec('calcInsolation.sce');
 
 daysPassed = numberDays(month,day);
 
 [latitude, longitude] = convertGlobal(degreesLat, minutesLat, secondsLat, latitudeDirection, degreesLong, minutesLong, secondsLong, longitudeDirection);
 solarHourAngle = convertLst(localTime, longitude, standardMeridian,daysPassed)
-[solarAltitudeAngle,solarAzimuthAngle] = getSunCoordinates(latitude, daysPassed,solarHourAngle);
-[insolationTotal] = getInsolation(solarAltitudeAngle,solarAzimuthAngle, panelTiltAngle, panelAzimuthAngle, groundReflectance, month, daysPassed);
+[solarAltitudeAngle,solarAzimuthAngle] = calcSunCoordinates(latitude, daysPassed,solarHourAngle);
+[insolationTotal] = calcInsolation(solarAltitudeAngle,solarAzimuthAngle, panelTiltAngle, panelAzimuthAngle, groundReflectance, month, daysPassed);
 
 
 
